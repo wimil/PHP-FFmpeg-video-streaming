@@ -82,7 +82,7 @@ class HLSFilter extends FormatFilter
      */
     private function getInitFilename(Representation $rep): string
     {
-        return $this->seg_sub_dir . $this->filename . "_" . $rep->getHeight() ."p_". $this->hls->getHlsFmp4InitFilename();
+        return $this->seg_sub_dir . $this->filename . "_" . $rep->getHeight() . "p_" . $this->hls->getHlsFmp4InitFilename();
     }
 
     /**
@@ -91,7 +91,7 @@ class HLSFilter extends FormatFilter
      */
     private function getSegmentFilename(Representation $rep): string
     {
-        $ext = ($this->hls->getHlsSegmentType() === "fmp4") ? "m4s" : "ts";
+        $ext = ($this->hls->getHlsSegmentType() === "fmp4") ? "m4s" : $rep->getHlsSegmentExtension();
         return $this->seg_filename . "_" . $rep->getHeight() . "p_%04d." . $ext;
     }
 
@@ -102,6 +102,8 @@ class HLSFilter extends FormatFilter
     private function initArgs(Representation $rep): array
     {
         $init = [
+            "preset"                    => $rep->getPereset(),
+            "crf"                       => $rep->getCRF(),
             "hls_list_size"             => $this->hls->getHlsListSize(),
             "hls_time"                  => $this->hls->getHlsTime(),
             "hls_allow_cache"           => (int)$this->hls->isHlsAllowCache(),
@@ -109,14 +111,16 @@ class HLSFilter extends FormatFilter
             "hls_fmp4_init_filename"    => $this->getInitFilename($rep),
             "hls_segment_filename"      => $this->getSegmentFilename($rep),
             "s:v"                       => $rep->size2string(),
-            "b:v"                       => $rep->getKiloBitrate() . "k"
+            "b:v"                       => $rep->getKiloBitrate() . "k",
         ];
 
-        return array_merge($init,
+        return array_merge(
+            $init,
             $this->getAudioBitrate($rep),
             $this->getBaseURL(),
             $this->flags(),
-            $this->getKeyInfo());
+            $this->getKeyInfo()
+        );
     }
 
     /**

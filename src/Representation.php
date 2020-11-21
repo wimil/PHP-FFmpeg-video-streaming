@@ -29,6 +29,12 @@ class Representation implements RepresentationInterface
     /** @var array $hls_stream_info hls stream info */
     private $hls_stream_info = [];
 
+    private $hls_segment_extension = 'ts';
+
+    private $preset = 'medium';
+
+    private $crf = 23;
+
     /**
      * @return string | null
      */
@@ -153,5 +159,38 @@ class Representation implements RepresentationInterface
     public function getSize(): Dimension
     {
         return $this->size;
+    }
+
+    public function setHlsSegmentExtension(String $extension)
+    {
+        $this->hls_segment_extension = $extension;
+        return $this;
+    }
+
+    public function getHlsSegmentExtension()
+    {
+        return $this->hls_segment_extension;
+    }
+
+    public function setPreset($preset)
+    {
+        $this->preset = $preset;
+        return $this;
+    }
+
+    public function getPereset()
+    {
+        return $this->preset;
+    }
+
+    public function setCRF(Int $crf)
+    {
+        $this->crf = $crf;
+        return $this;
+    }
+
+    public function getCRF()
+    {
+        return $this->crf;
     }
 }
