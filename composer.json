@@ -1,0 +1,76 @@
+{
+    "name": "aminyazdanpanah/php-ffmpeg-video-streaming",
+    "description": "📼 PHP FFMpeg - Video Streaming - DASH, HLS http://video.aminyazdanpanah.com",
+    "type": "library",
+    "keywords": [
+        "dash",
+        "mpeg-dash",
+        "hls",
+        "video",
+        "mp4",
+        "video-streaming",
+        "adaptive-http-streaming",
+        "streaming",
+        "video-streaming",
+        "live-streaming",
+        "http-liv-streaming",
+        "dynamic-adaptive-streaming-over-http",
+        "cloud",
+        "clouds",
+        "google-cloud-storage",
+        "s3",
+        "amazons3",
+        "microsoft-azure",
+        "encoding",
+        "mpd",
+        "m3u8",
+        "encryption",
+        "drm",
+        "key-rotation",
+        "clearkey"
+    ],
+    "homepage": "https://github.com/aminyazdanpanah/PHP-FFmpeg-video-streaming",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Amin Yazdanpanah",
+            "email": "contact@aminyazdanpanah.com",
+            "homepage": "https://www.aminyazdanpanah.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "Streaming\\": "src"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.4",
+        "aws/aws-sdk-php": "^3.0@dev",
+        "google/cloud-storage": "dev-master",
+        "microsoft/azure-storage-blob": "dev-master"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\FFMpegStreaming\\": "tests"
+        }
+    },
+    "require": {
+        "php": "^7.2",
+        "php-ffmpeg/php-ffmpeg": "^0.15 || 0.16",
+        "symfony/filesystem": "^4.0 || ^5.0"
+    },
+    "suggest": {
+        "aminyazdanpanah/php-shaka": "aminyazdanpanah/php-shaka is suggested for using DRM and encryption",
+        "aws/aws-sdk-php": "Allow sending stream content to AWS services like S3",
+        "google/cloud-storage": "Allow sending stream content to Google services like Google Storage",
+        "microsoft/azure-storage-blob": "Allow sending stream content to Google services like Google Storage",
+        "aminyazdanpanah/handling-file-uploads": "aminyazdanpanah/handling-file-uploads is suggested for uploading and validating a new video."
+    }
+}
