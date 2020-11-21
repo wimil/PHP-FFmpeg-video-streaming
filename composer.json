@@ -1,5 +1,5 @@
 {
-    "name": "aminyazdanpanah/php-ffmpeg-video-streaming",
+    "name": "wimil/php-ffmpeg-video-streaming",
     "description": "📼 PHP FFMpeg - Video Streaming - DASH, HLS http://video.aminyazdanpanah.com",
     "type": "library",
     "keywords": [
